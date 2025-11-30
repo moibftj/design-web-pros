@@ -1,18 +1,25 @@
 {
   "name": "Supabase Next.js DevContainer",
-  "dockerFile": "Dockerfile",
-  "workspaceFolder": "/app",
-  "appPort": [3000],
-  "forwardPorts": [54321],
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash",
-    "editor.formatOnSave": true
+  "build": {
+    "dockerfile": "Dockerfile"
   },
-  "extensions": [
-    "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "supabase.supabase-vscode",
-    "dbaeumer.vscode-eslint"
-  ],
-  "postCreateCommand": "npm install"
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "forwardPorts": [3000, 54321],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "supabase.supabase-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
 }
